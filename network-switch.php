@@ -30,10 +30,8 @@ function nsb_network_switch () {
 <style type="text/css">
 .nsb_switch {
 	float: right;
-	margin: 0 10px;
-	height: 13px;
-	margin-top: 4px;
-	padding: 5px;
+	line-height: 20px;
+	padding: 6px 8px 5px;
 }
 
 .nsb_switch a, .nsb_switch a:visited, .nsb_switch a:hover, .nsb_switch a:active {
@@ -42,6 +40,7 @@ function nsb_network_switch () {
 }
 </style>
 EOS;
+
 	if (!WP_NETWORK_ADMIN) {
 		$switch_text = __("Network Admin", 'nsb');
 		$switch_url = admin_url('/network/index.php');
@@ -50,7 +49,7 @@ EOS;
 (function ($) {
 $(function () {
 	$("#site-heading").after(
-		'<div class="nsb_switch admin_area button"><a href="$switch_url">$switch_text</a></div>'
+		'<div class="nsb_switch admin_area"><a href="$switch_url">$switch_text</a></div>'
 	);
 });
 })(jQuery);
@@ -64,7 +63,7 @@ EOSTN;
 (function ($) {
 $(function () {
 	$("#site-heading").after(
-		'<div class="nsb_switch admin_area button"><a href="$switch_url">$switch_text</a></div>'
+		'<div class="nsb_switch admin_area"><a href="$switch_url">$switch_text</a></div>'
 	);
 });
 })(jQuery);
