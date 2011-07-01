@@ -24,14 +24,27 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
+/**
+ * If you wish to show the link as button rather then the link,
+ * add this to your wp-config.php:
+ * 	define ('NSB_SHOW_BUTTON', true);
+ */
+if (!defined('NSB_SHOW_BUTTON')) define ('NSB_SHOW_BUTTON', false);
+
+
 function nsb_network_switch () {
 	if (!is_super_admin()) return false;
+	$style = (defined('NSB_SHOW_BUTTON') && NSB_SHOW_BUTTON) ?
+		"margin: 0 10px; height: 13px; margin-top: 4px; padding: 5px;"
+		:
+		"line-height: 20px; padding: 6px 8px 5px;"
+	;
+	$class = (defined('NSB_SHOW_BUTTON') && NSB_SHOW_BUTTON) ? 'button' : '';
 	echo <<<EOS
 <style type="text/css">
 .nsb_switch {
 	float: right;
-	line-height: 20px;
-	padding: 6px 8px 5px;
+	$style
 }
 
 .nsb_switch a, .nsb_switch a:visited, .nsb_switch a:hover, .nsb_switch a:active {
@@ -49,7 +62,7 @@ EOS;
 (function ($) {
 $(function () {
 	$("#site-heading").after(
-		'<div class="nsb_switch admin_area"><a href="$switch_url">$switch_text</a></div>'
+		'<div class="nsb_switch admin_area $class"><a href="$switch_url">$switch_text</a></div>'
 	);
 });
 })(jQuery);
@@ -63,7 +76,7 @@ EOSTN;
 (function ($) {
 $(function () {
 	$("#site-heading").after(
-		'<div class="nsb_switch admin_area"><a href="$switch_url">$switch_text</a></div>'
+		'<div class="nsb_switch admin_area $class"><a href="$switch_url">$switch_text</a></div>'
 	);
 });
 })(jQuery);
