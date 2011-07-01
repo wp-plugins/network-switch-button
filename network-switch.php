@@ -39,6 +39,9 @@ function nsb_network_switch () {
 		:
 		"line-height: 20px; padding: 6px 8px 5px;"
 	;
+	$link_style = (defined('NSB_SHOW_BUTTON') && NSB_SHOW_BUTTON)
+		? '' :
+		'#wphead .nsb_switch a:hover { text-decoration: underline; }';
 	$class = (defined('NSB_SHOW_BUTTON') && NSB_SHOW_BUTTON) ? 'button' : '';
 	echo <<<EOS
 <style type="text/css">
@@ -51,6 +54,7 @@ function nsb_network_switch () {
 	color: #444;
 	text-decoration: none;
 }
+$link_style
 </style>
 EOS;
 
