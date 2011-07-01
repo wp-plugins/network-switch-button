@@ -3,7 +3,7 @@
 Plugin Name: Network Switch Button
 Plugin URI: http://premium.wpmudev.org/project/network-switch-button
 Description: Add a Network Admin / Site Admin button to your WordPress Multisite Dashboard
-Version: 1.0
+Version: 1.0.1
 Author: Ve Bailovity (Incsub)
 Author URI: http://premium.wpmudev.org
 WDP ID: 235
@@ -25,6 +25,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 function nsb_network_switch () {
+	if (!is_super_admin()) return false;
 	echo <<<EOS
 <style type="text/css">
 .nsb_switch {

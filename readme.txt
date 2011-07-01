@@ -3,7 +3,7 @@ Contributors: WPMUDEV, VeBailovity
 Tags: rebrand, admin area, backend, wpmu, rebranding, multisite, network admin, network admin button, ui, 3.2 ui
 Requires at least: 3.2
 Tested up to: 3.2
-Stable tag: 1.0
+Stable tag: 1.0.1
 
 Add a Network Admin / Site Admin button to your WordPress Multisite Dashboard
 
