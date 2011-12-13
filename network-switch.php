@@ -3,7 +3,7 @@
 Plugin Name: Network Switch Button
 Plugin URI: http://premium.wpmudev.org/project/network-switch-button
 Description: Add a Network Admin / Site Admin button to your WordPress Multisite Dashboard
-Version: 1.0.1
+Version: 1.1
 Author: Ve Bailovity (Incsub)
 Author URI: http://premium.wpmudev.org
 WDP ID: 235
@@ -59,13 +59,14 @@ $link_style
 EOS;
 
 	if (!WP_NETWORK_ADMIN) {
-		$switch_text = __("Network Admin", 'nsb');
-		$switch_url = admin_url('/network/index.php');
+		$switch_text = __("Network Admin");
+		$switch_url = network_admin_url('/index.php');
 		echo <<<EOSTN
 <script type="text/javascript">
 (function ($) {
 $(function () {
-	$("#site-heading").after(
+	var el = $("#wp-admin-bar-my-account").length ? $("#wp-admin-bar-my-account") : $("#site-heading");
+	el.after(
 		'<div class="nsb_switch admin_area $class"><a href="$switch_url">$switch_text</a></div>'
 	);
 });
@@ -73,13 +74,14 @@ $(function () {
 </script>
 EOSTN;
 	} else {
-		$switch_text = __("Site Admin", 'nsb');
+		$switch_text = __("Site Admin");
 		$switch_url = admin_url('/index.php');
 		echo <<<EOSTS
 <script type="text/javascript">
 (function ($) {
 $(function () {
-	$("#site-heading").after(
+	var el = $("#wp-admin-bar-my-account").length ? $("#wp-admin-bar-my-account") : $("#site-heading");
+	el.after(
 		'<div class="nsb_switch admin_area $class"><a href="$switch_url">$switch_text</a></div>'
 	);
 });
